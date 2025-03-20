@@ -1,0 +1,52 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+ENV/
+*.env
+*.venv
+Pipfile.lock
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Logs and databases
+logs/
+*.log
+*.sqlite3
+instance/
+
+# pytest cache
+.pytest_cache/
+
+# MyPy cache
+.mypy_cache/
+
+# VS Code settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Docker files
+.dockerignore
+docker-compose.override.yml
+docker-compose.override.yaml
+
+# Docker volumes & build artifacts
+**/__pycache__/
+**/*.pyc
+.docker/
+db_data/
+volumes/
+docker-build/

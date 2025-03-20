@@ -1,0 +1,219 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Book API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/books": {
+      "get": {
+        "parameters": [
+          {
+            "name": "currentPage",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "rowsPerPage",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {},
+          "404": {},
+          "500": {}
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "isbn": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "number"
+                },
+                "author_id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "title",
+                "isbn",
+                "price",
+                "author_id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {},
+          "400": {},
+          "500": {}
+        }
+      }
+    },
+    "/books/author/{author_id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "author_id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "currentPage",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "rowsPerPage",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {},
+          "404": {},
+          "500": {}
+        }
+      }
+    },
+    "/books/{book_id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "book_id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {},
+          "404": {},
+          "500": {}
+        }
+      },
+      "put": {
+        "parameters": [
+          {
+            "name": "book_id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "isbn": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "number"
+                },
+                "author_id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {},
+          "400": {},
+          "404": {},
+          "500": {}
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "book_id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {},
+          "404": {},
+          "500": {}
+        }
+      }
+    },
+    "/authors": {
+      "get":{
+        "responses": {
+          "201": {},
+          "400": {},
+          "500": {}
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {},
+          "400": {},
+          "500": {}
+        }
+      }
+    },
+    "/authors/{author_id}":{
+      "delete": {
+        "parameters": [
+          {
+            "name": "author_id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {},
+          "404": {},
+          "500": {}
+        }
+      }
+    }
+  }
+}
