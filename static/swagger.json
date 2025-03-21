@@ -1,10 +1,87 @@
 {
   "swagger": "2.0",
+  "securityDefinitions": {
+    "BearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
   "info": {
     "title": "Book API",
     "version": "1.0.0"
   },
   "paths": {
+    "/register": {
+      "post":{
+        "security": [],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {},
+          "400": {},
+          "500": {}
+        }
+      }
+    },
+    "/login":{
+      "post":{
+        "security": [],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {},
+          "400": {},
+          "401": {},
+          "500":{}
+        }
+      }
+    },
     "/books": {
       "get": {
         "parameters": [
@@ -19,6 +96,36 @@
             "in": "query",
             "type": "integer",
             "required": true
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "intstringeger",
+            "required": false,
+            "description": "Order By asc or desc "
+          },
+          {
+            "name": "orderAttribute",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "Order Attribute id or price "
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "format": "date",
+            "description": "Date in YYYY-MM-DD format"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "format": "date",
+            "description": "Date in YYYY-MM-DD format"
           }
         ],
         "responses": {
@@ -61,6 +168,23 @@
         "responses": {
           "201": {},
           "400": {},
+          "500": {}
+        }
+      }
+    },
+    "/books/search": {
+      "get": {
+        "parameters": [
+          {
+            "name": "title",
+            "in": "query",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {},
+          "404": {},
           "500": {}
         }
       }

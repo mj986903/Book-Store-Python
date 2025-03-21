@@ -1,10 +1,8 @@
-from repository import BookRepository,AuthorRepository
-from models import Book
-
+from repository import BookRepository,AuthorRepository,UserRepository
 class BookService:
     @staticmethod
-    def get_all_books(currentPage,rowsPerPage):
-        books,total_count = BookRepository.get_all_books((currentPage - 1) * rowsPerPage,rowsPerPage)
+    def get_all_books(currentPage,rowsPerPage,parsed_start_date,parsed_end_date,order_by="asc",order_attribute="id"):
+        books,total_count = BookRepository.get_all_books((currentPage - 1) * rowsPerPage,rowsPerPage,parsed_start_date,parsed_end_date,order_by,order_attribute)
         total_pages = (total_count // rowsPerPage) + (1 if total_count % rowsPerPage > 0 else 0)
 
         if currentPage > total_pages and total_pages > 0:
@@ -37,6 +35,11 @@ class BookService:
     @staticmethod
     def get_book(book_id):
         book = BookRepository.get_book(book_id)
+        return book.to_dict() if book else None
+    
+    @staticmethod
+    def search_book(title):
+        book = BookRepository.search_book(title)
         return book.to_dict() if book else None
     
     @staticmethod
@@ -91,3 +94,11 @@ class AuthorService:
     @staticmethod
     def delete_author(author_id):
         return AuthorRepository.delete_author(author_id)
+    
+class UserService:
+    @staticmethod
+    def register(user):
+        return UserRepository.add_user(user)
+    
+    def login(user):
+        return UserRepository.check_user(user)
