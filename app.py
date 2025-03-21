@@ -2,7 +2,9 @@ from datetime import datetime
 from flask import Flask,jsonify,request
 from models import Book,APIResponse,Author,User
 from database import init_db,db
-from service import BookService,AuthorService,UserService
+from services.book_service import BookService
+from services.author_service import AuthorService
+from services.user_service import UserService
 from flask_swagger_ui import get_swaggerui_blueprint
 import re
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required

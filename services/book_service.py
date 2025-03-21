@@ -1,4 +1,5 @@
-from repository import BookRepository,AuthorRepository,UserRepository
+from repository import BookRepository
+
 class BookService:
     @staticmethod
     def get_all_books(currentPage,rowsPerPage,parsed_start_date,parsed_end_date,order_by="asc",order_attribute="id"):
@@ -81,24 +82,3 @@ class BookService:
     def delete_book(book_id):
         return BookRepository.delete_book(book_id)
     
-class AuthorService:
-    @staticmethod
-    def get_all_authors():
-        authors =  AuthorRepository.get_all_authors()
-        return [author.to_dict() for author in authors]
-
-    @staticmethod
-    def add_author(author):
-        return AuthorRepository.add_author(author)
-        
-    @staticmethod
-    def delete_author(author_id):
-        return AuthorRepository.delete_author(author_id)
-    
-class UserService:
-    @staticmethod
-    def register(user):
-        return UserRepository.add_user(user)
-    
-    def login(user):
-        return UserRepository.check_user(user)
