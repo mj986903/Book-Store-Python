@@ -1,4 +1,5 @@
-from models import Book,Author
+from models.author import Author
+from models.book import Book
 from database import db
 from sqlalchemy import asc, desc,func
 

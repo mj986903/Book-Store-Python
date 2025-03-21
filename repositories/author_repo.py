@@ -1,4 +1,4 @@
-from models import Author
+from models.author import Author
 from database import db
 
 class AuthorRepository:
