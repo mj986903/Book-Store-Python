@@ -24,7 +24,7 @@ Follow the steps below to set up and run the Book Store API locally.
     * POST   /register                  -> Register a new user
     * POST   /login                     -> Login user
 
-    * GET    /books                     -> List all books with filters
+    * GET    /books?currentPage={page}&rowsPerPage={rows}&orderBy={asc/desc}&orderAttribute={id/price}&startDate={YYYY-MM-DD}&endDate={YYYY-MM-DD}                     -> List all books with filters
     * POST   /books                     -> Add a new book
     * GET    /books/search              -> Search books
     * GET    /books/author/{author_id}  -> List books by author ID
