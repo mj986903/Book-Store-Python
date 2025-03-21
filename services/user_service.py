@@ -1,4 +1,4 @@
-from repository import UserRepository
+from repositories.user_repo import UserRepository
 
 class UserService:
     @staticmethod

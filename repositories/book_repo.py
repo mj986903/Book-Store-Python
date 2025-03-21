@@ -1,4 +1,4 @@
-from models import Book,Author,User
+from models import Book,Author
 from database import db
 from sqlalchemy import asc, desc,func
 
@@ -55,41 +55,3 @@ class BookRepository:
             return False
 
     
-
-class AuthorRepository:
-    @staticmethod
-    def get_all_authors():
-        return db.session.query(Author).filter(Author.deleted == False).order_by(Author.id).all()
-    
-    @staticmethod
-    def add_author(author):
-        db.session.add(author)
-        db.session.commit()
-
-    @staticmethod
-    def delete_author(author_id):
-        author = db.session.query(Author).filter(Author.id == author_id).first()
-        if author :
-            author.deleted = True
-            db.session.commit()
-            return True 
-        else :
-            return False
-        
-
-class UserRepository:
-    @staticmethod
-    def add_user(user):
-        already_user = db.session.query(User).filter(User.email == user.email).first()
-        if not already_user:
-            db.session.add(user)
-            db.session.commit()
-            return True
-        return False
-    
-    @staticmethod
-    def check_user(user):
-        already_user = db.session.query(User).filter(User.email == user.email,User.active == True).first()
-        if already_user:
-            return already_user.check_password(user.password)
-        return False

@@ -1,4 +1,4 @@
-from repository import AuthorRepository
+from repositories.author_repo import AuthorRepository
 
 class AuthorService:
     @staticmethod

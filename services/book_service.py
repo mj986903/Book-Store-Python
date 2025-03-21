@@ -1,4 +1,4 @@
-from repository import BookRepository
+from repositories.book_repo import BookRepository
 
 class BookService:
     @staticmethod
