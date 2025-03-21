@@ -21,17 +21,51 @@ Follow the steps below to set up and run the Book Store API locally.
 
 6. API Endpoints :
 
-    * POST   /register                  -> Register a new user
-    * POST   /login                     -> Login user
+    * **Register a new user**  
+        * Method: POST  
+        * URL: /register  
 
-    * GET    /books?currentPage={page}&rowsPerPage={rows}&orderBy={asc/desc}&orderAttribute={id/price}&startDate={YYYY-MM-DD}&endDate={YYYY-MM-DD}                     -> List all books with filters
-    * POST   /books                     -> Add a new book
-    * GET    /books/search              -> Search books
-    * GET    /books/author/{author_id}  -> List books by author ID
-    * GET    /books/{book_id}           -> Get book by ID
-    * PUT    /books/{book_id}           -> Update book by ID
-    * DELETE /books/{book_id}           -> Delete book by ID
+    * **Login user**  
+        * Method: POST  
+        * URL: /login  
 
-    * GET    /authors                   -> List all authors
-    * POST   /authors                   -> Add a new author
-    * DELETE /authors/{author_id}       -> Delete author by ID
+    * **List books by author with pagination**  
+        * Method: GET  
+        * URL: /books/author/{author_id}?currentPage={page}&rowsPerPage={rows} 
+
+    * **List books with pagination and filtering**  
+        * Method: GET  
+        * URL: /books?currentPage={page}&rowsPerPage={rows}&orderBy={asc/desc}&orderAttribute={id/price}&startDate={YYYY-MM-DD}&endDate={YYYY-MM-DD}  
+
+    * **Add a new book**  
+        * Method: POST  
+        * URL: /books  
+
+    * **Search book by title**  
+        * Method: GET  
+        * URL: /books/search?title={title}  
+
+    * **Get book by ID**  
+        * Method: GET  
+        * URL: /books/{book_id}  
+
+    * **Update book by ID**  
+        * Method: PUT  
+        * URL: /books/{book_id}  
+
+    * **Delete book by ID**  
+        * Method: DELETE  
+        * URL: /books/{book_id}  
+
+    * **List all authors**  
+        * Method: GET  
+        * URL: /authors  
+
+    * **Add a new author**  
+        * Method: POST  
+        * URL: /authors  
+
+    * **Delete author by ID**  
+        * Method: DELETE  
+        * URL: /authors/{author_id}  
+
